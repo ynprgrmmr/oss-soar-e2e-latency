@@ -1,0 +1,37 @@
+{
+  "run_id": "4b1dd03e",
+  "condition": "C4-jitter",
+  "attacker_host": "attacker",
+  "target": "10.10.2.20",
+  "params": {
+    "target": "10.10.2.20",
+    "port": 9999,
+    "interval_ms": 10.0,
+    "baseline_s": 3.0,
+    "block_detect_s": 2.0,
+    "post_block_s": 1.0,
+    "timeout_s": 120.0,
+    "condition": "C4-jitter"
+  },
+  "blocked": true,
+  "t0_ns": 1795500920668218787,
+  "t3_ns": 1795500921157903037,
+  "t3_lower_ns": 1795500921147904905,
+  "last_ok_seq": 348,
+  "terminal_loss_count": 302,
+  "probe_interval_ns": 10000000,
+  "probes_sent": 651,
+  "probes_recv": 349,
+  "baseline_rtt_us_median": 759.822,
+  "t1_detect_ns": 1795500920972000000,
+  "wazuh_alert_id": "1795500920.3610675",
+  "wazuh_agent": "target",
+  "sources": [
+    "wazuh",
+    "shuffle"
+  ],
+  "t1_soar_ns": 1795500921026368701,
+  "t2_req_ns": 1795500921028474865,
+  "t2_ns": 1795500921050506466,
+  "mikrotik_status": 201
+}

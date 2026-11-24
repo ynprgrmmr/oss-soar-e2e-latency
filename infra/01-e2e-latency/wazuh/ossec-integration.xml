@@ -1,0 +1,14 @@
+<!--
+  Wazuh manager: add inside <ossec_config> of /var/ossec/etc/ossec.conf
+  then `systemctl restart wazuh-manager`.
+
+  hook_url = webhook_path printed by ../shuffle/create_workflow.py, called on
+  the Shuffle backend over loopback (same VM, no TLS, never leaves the host).
+  Restricting by rule_id keeps unrelated alerts out of the measurement path.
+-->
+<integration>
+  <name>shuffle</name>
+  <hook_url>http://127.0.0.1:5001/api/v1/hooks/webhook_REPLACE_ME</hook_url>
+  <rule_id>100510</rule_id>
+  <alert_format>json</alert_format>
+</integration>

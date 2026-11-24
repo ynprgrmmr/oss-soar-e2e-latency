@@ -1,0 +1,18 @@
+# Copy to terraform.tfvars (git-ignored) and fill in.
+oci_profile      = "DEFAULT"
+region           = "us-phoenix-1"
+tenancy_ocid     = "ocid1.tenancy.oc1..xxxxxxxxxxxxxxxx"
+compartment_ocid = "ocid1.compartment.oc1..xxxxxxxxxxxxxxxx"
+
+# Monthly budget in billing currency. Expected lab spend is 0.
+budget_amount = 100
+
+# Real address goes ONLY in terraform.tfvars, never in this example.
+budget_alert_recipients = "you@example.com"
+
+# 15:00 UTC = 24:00 JST
+stop_cron_utc = "0 15 * * *"
+
+# Set false if you lack IAM admin rights; then create the policy manually
+# (statement shown in README.md).
+create_scheduler_policy = true

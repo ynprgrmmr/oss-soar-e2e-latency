@@ -1,0 +1,17 @@
+<!--
+  Condition C4: Wazuh Active Response straight to CHR (no Shuffle).
+  Add inside <ossec_config> on the manager and REMOVE the shuffle
+  <integration> block for the duration of C4, so only one responder fires.
+  Script: active-response/soar-chr-block -> /var/ossec/active-response/bin/
+-->
+<command>
+  <name>soar-chr-block</name>
+  <executable>soar-chr-block</executable>
+  <timeout_allowed>no</timeout_allowed>
+</command>
+
+<active-response>
+  <command>soar-chr-block</command>
+  <location>server</location>
+  <rules_id>100510</rules_id>
+</active-response>

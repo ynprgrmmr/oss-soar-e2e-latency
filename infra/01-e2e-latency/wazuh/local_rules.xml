@@ -1,0 +1,16 @@
+<!--
+  Wazuh manager: /var/ossec/etc/rules/local_rules.xml (append)
+
+  Experiment trigger rule. The attacker connects to the target's sshd with
+  the username "soar-probe-<run_id>". sshd logs "Invalid user ..." which
+  fires built-in rule 5710; this child rule narrows it to experiment traffic
+  only and raises the level so it is the sole rule wired to Shuffle.
+-->
+<group name="soar_lab,">
+  <rule id="100510" level="10">
+    <if_sid>5710</if_sid>
+    <match>Invalid user soar-probe-</match>
+    <description>soar-net-lab: E2E latency trigger (invalid user soar-probe-*)</description>
+    <group>soar_lab_trigger,</group>
+  </rule>
+</group>

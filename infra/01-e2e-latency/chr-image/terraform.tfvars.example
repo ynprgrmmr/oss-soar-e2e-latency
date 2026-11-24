@@ -1,0 +1,11 @@
+# Copy to terraform.tfvars (git-ignored). The last four lines come from
+# `./prepare_image.sh 7.25.1 arm64` and `stat -c %s <image_path>`.
+oci_profile      = "SOAR_DEPLOY"
+region           = "us-phoenix-1"
+compartment_ocid = "ocid1.compartment.oc1..xxxxxxxxxxxxxxxx"
+
+chr_version      = "7.25.1"
+chr_arch         = "arm64"
+image_path       = "/home/you/.cache/soar-net-lab/chr/7.25.1-arm64/chr-7.25.1-arm64.qcow2"
+image_sha256     = "0000000000000000000000000000000000000000000000000000000000000000"
+image_size_bytes = 0

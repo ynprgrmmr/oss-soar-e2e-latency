@@ -1,0 +1,32 @@
+2026-11-24T05:38:07Z batch start condition=C4-jitter n=30 target=10.10.2.20
+2026-11-24T05:38:20Z trial 1/30 {"run_id": "ba526a09", "blocked": true, "e2e_ms": 889.706768}
+2026-11-24T05:39:34Z trial 2/30 {"run_id": "c20a9211", "blocked": true, "e2e_ms": 1161.350191}
+2026-11-24T05:40:56Z trial 3/30 {"run_id": "db2c8705", "blocked": true, "e2e_ms": 1684.821799}
+2026-11-24T05:42:20Z trial 4/30 {"run_id": "129de4ad", "blocked": true, "e2e_ms": 694.371539}
+2026-11-24T05:43:42Z trial 5/30 {"run_id": "f20b2569", "blocked": true, "e2e_ms": 1995.856916}
+2026-11-24T05:45:04Z trial 6/30 {"run_id": "68df09cf", "blocked": true, "e2e_ms": 1619.68011}
+2026-11-24T05:46:26Z trial 7/30 {"run_id": "6ab463ce", "blocked": true, "e2e_ms": 3087.715278}
+2026-11-24T05:47:46Z trial 8/30 {"run_id": "892641f5", "blocked": true, "e2e_ms": 1205.003567}
+2026-11-24T05:49:08Z trial 9/30 {"run_id": "573e524c", "blocked": true, "e2e_ms": 972.185052}
+2026-11-24T05:50:28Z trial 10/30 {"run_id": "210acc47", "blocked": true, "e2e_ms": 2375.079642}
+2026-11-24T05:51:40Z trial 11/30 {"run_id": "e2daea8f", "blocked": true, "e2e_ms": 1176.083604}
+2026-11-24T05:52:52Z trial 12/30 {"run_id": "22f9b0be", "blocked": true, "e2e_ms": 2075.014021}
+2026-11-24T05:54:06Z trial 13/30 {"run_id": "91f95006", "blocked": true, "e2e_ms": 1989.683991}
+2026-11-24T05:55:28Z trial 14/30 {"run_id": "c949525a", "blocked": true, "e2e_ms": 2405.75637}
+2026-11-24T05:56:50Z trial 15/30 {"run_id": "ea7d22c1", "blocked": true, "e2e_ms": 2199.727623}
+2026-11-24T05:58:12Z trial 16/30 {"run_id": "e93a87cf", "blocked": true, "e2e_ms": 1639.671255}
+2026-11-24T05:59:34Z trial 17/30 {"run_id": "e1acd87d", "blocked": true, "e2e_ms": 1989.699786}
+2026-11-24T06:00:54Z trial 18/30 {"run_id": "1899ab5b", "blocked": true, "e2e_ms": 492.119011}
+2026-11-24T06:02:18Z trial 19/30 {"run_id": "61061d40", "blocked": true, "e2e_ms": 1919.605915}
+2026-11-24T06:03:36Z trial 20/30 {"run_id": "5f7902ef", "blocked": true, "e2e_ms": 509.684387}
+2026-11-24T06:04:52Z trial 21/30 {"run_id": "c69d0d2b", "blocked": true, "e2e_ms": 2429.655928}
+2026-11-24T06:06:12Z trial 22/30 {"run_id": "458152bc", "blocked": true, "e2e_ms": 2411.256245}
+2026-11-24T06:07:32Z trial 23/30 {"run_id": "44c8dae6", "blocked": true, "e2e_ms": 1545.524343}
+2026-11-24T06:08:44Z trial 24/30 {"run_id": "4f3770a9", "blocked": true, "e2e_ms": 1314.676097}
+2026-11-24T06:09:58Z trial 25/30 {"run_id": "a340c276", "blocked": true, "e2e_ms": 1045.105544}
+2026-11-24T06:11:20Z trial 26/30 {"run_id": "a1120da0", "blocked": true, "e2e_ms": 951.549188}
+2026-11-24T06:12:42Z trial 27/30 {"run_id": "81cb144c", "blocked": true, "e2e_ms": 2289.71387}
+2026-11-24T06:14:04Z trial 28/30 {"run_id": "f711d7ac", "blocked": true, "e2e_ms": 1969.712539}
+2026-11-24T06:15:24Z trial 29/30 {"run_id": "4b1dd03e", "blocked": true, "e2e_ms": 489.68425}
+2026-11-24T06:16:46Z trial 30/30 {"run_id": "9cb4973c", "blocked": true, "e2e_ms": 1793.128202}
+2026-11-24T06:16:46Z batch done

@@ -1,0 +1,17 @@
+# Copy to terraform.tfvars (git-ignored) and fill in.
+oci_profile      = "DEFAULT"
+region           = "us-phoenix-1"
+compartment_ocid = "ocid1.compartment.oc1..xxxxxxxxxxxxxxxx"
+chr_image_ocid   = "ocid1.image.oc1.phx.xxxxxxxxxxxxxxxx"
+
+# "dual-nic" (A1 arm64, default) or "single-nic" (E2.1.Micro x86_64 fallback).
+# Image architecture must match. Switching modes = destroy + apply.
+chr_mode = "dual-nic"
+
+# Your operator IP. 203.0.113.0/24 is a documentation range (RFC 5737).
+admin_cidr = "203.0.113.10/32"
+
+ssh_public_key_path = "~/.ssh/id_ed25519.pub"
+
+# Teardown deadline used by the auto-stop tooling (see ../AUTO_STOP.md)
+expires_at = "2026-11-30T15:00:00Z"

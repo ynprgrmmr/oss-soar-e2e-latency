@@ -1,0 +1,63 @@
+#!/usr/bin/python3
+# Wazuh Active Response (location=server) for condition C4: block the alert's
+# srcip on the CHR address list directly, bypassing Shuffle.
+#
+# Deliberately uses the system python3 + stdlib only: the Wazuh framework
+# python wrapper costs ~0.6 s of interpreter start-up on soar (measured),
+# which would blur the "SOAR layer vs. no SOAR layer" comparison.
+#
+# Config (root:wazuh 640, never committed): /var/ossec/etc/soar-lab-chr.json
+#   {"url": "https://10.10.0.10", "user": "...", "password": "...",
+#    "ca_file": "/var/ossec/etc/soar-lab-ca.crt", "timeout": "60s"}
+# Output: one JSON line per run appended to /var/ossec/logs/soar-lab-ar.log
+import base64, json, re, ssl, sys, time, urllib.request
+
+t1_ar_ns = time.time_ns()  # first user code executed by wazuh-execd
+
+LOG = "/var/ossec/logs/soar-lab-ar.log"
+CONF = "/var/ossec/etc/soar-lab-chr.json"
+
+
+def main() -> None:
+    raw = sys.stdin.readline()
+    msg = json.loads(raw) if raw.strip() else {}
+    if msg.get("command") != "add":
+        return
+    alert = (msg.get("parameters") or {}).get("alert") or {}
+    srcip = (alert.get("data") or {}).get("srcip")
+    m = re.search(r"soar-probe-([0-9a-f]{8})", alert.get("full_log", ""))
+    run_id = m.group(1) if m else None
+
+    with open(CONF) as f:
+        conf = json.load(f)
+    ctx = ssl.create_default_context(cafile=conf["ca_file"])
+    ctx.check_hostname = False  # CN/SAN is the CHR IP; chain still verified
+    req = urllib.request.Request(
+        conf["url"].rstrip("/") + "/rest/ip/firewall/address-list",
+        data=json.dumps({"list": "soar-blocklist", "address": srcip,
+                         "timeout": conf.get("timeout", "60s"), "comment": "run=" + str(run_id)}).encode(),
+        method="PUT",
+        headers={"Content-Type": "application/json",
+                 "Authorization": "Basic " + base64.b64encode(f"{conf['user']}:{conf['password']}".encode()).decode()})
+
+    status, err = None, None
+    t2_req_ns = time.time_ns()
+    try:
+        with urllib.request.urlopen(req, timeout=5, context=ctx) as r:
+            status = r.status
+            r.read()
+    except Exception as e:  # noqa: BLE001 - log and keep the timestamps
+        err = str(e)[:200]
+    t2_resp_ns = time.time_ns()
+
+    rec = {"soar_lab": True, "responder": "wazuh-ar", "run_id": run_id, "srcip": srcip,
+           "status": status, "error": err, "wazuh_rule": (alert.get("rule") or {}).get("id"),
+           # same keys as the Shuffle action so the collectors/summary are shared;
+           # for C4 "t1_soar" means "AR script started"
+           "t1_soar_ns": t1_ar_ns, "t2_req_ns": t2_req_ns, "t2_resp_ns": t2_resp_ns}
+    with open(LOG, "a") as f:
+        f.write(json.dumps(rec) + "\n")
+
+
+if __name__ == "__main__":
+    main()

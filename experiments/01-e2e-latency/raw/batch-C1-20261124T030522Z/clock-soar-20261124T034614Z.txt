@@ -1,0 +1,27 @@
+# host=soar utc=2026-11-24T03:46:14.361650305Z
+Reference ID    : A9FEA9FE (169.254.169.254)
+Stratum         : 4
+Ref time (UTC)  : Tue Nov 24 03:45:13 2026
+System time     : 0.000000544 seconds slow of NTP time
+Last offset     : -0.000003805 seconds
+RMS offset      : 0.000014003 seconds
+Frequency       : 2.056 ppm slow
+Residual freq   : -0.000 ppm
+Skew            : 0.036 ppm
+Root delay      : 0.000697145 seconds
+Root dispersion : 0.000263217 seconds
+Update interval : 64.1 seconds
+Leap status     : Normal
+
+
+  .-- Source mode  '^' = server, '=' = peer, '#' = local clock.
+ / .- Source state '*' = current best, '+' = combined, '-' = not combined,
+| /             'x' = may be in error, '~' = too variable, '?' = unusable.
+||                                                 .- xxxx [ yyyy ] +/- zzzz
+||      Reachability register (octal) -.           |  xxxx = adjusted offset,
+||      Log2(Polling interval) --.      |          |  yyyy = measured offset,
+||                                \     |          |  zzzz = estimated error.
+||                                 |    |           \
+MS Name/IP address         Stratum Poll Reach LastRx Last sample               
+===============================================================================
+^* 169.254.169.254               3   6   377    60    -56us[  -60us] +/- 1362us

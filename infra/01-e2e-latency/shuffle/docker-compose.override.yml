@@ -1,0 +1,30 @@
+# Shuffle v2.3.0 on the soar VM next to Wazuh (see COLOCATE_WITH_WAZUH.md).
+# Copy next to Shuffle's docker-compose.yml (git clone --branch v2.3.0).
+# Requires Docker Compose >= 2.24 for !reset / !override.
+services:
+  # amd64-only image with no 2.3.0 tag; soar is arm64. Not needed for this lab.
+  shuffle-security:
+    profiles: ["disabled"]
+
+  frontend:
+    image: ghcr.io/shuffle/shuffle-frontend:2.3.0
+    ports: !override
+      - "127.0.0.1:3001:80"     # plain HTTP: local only
+      - "3443:443"              # UI + webhooks; DOCKER-USER limits sources
+
+  backend:
+    image: ghcr.io/shuffle/shuffle-backend:2.3.0
+    ports: !override
+      - "127.0.0.1:5001:5001"   # orborus uses the compose network, not this port
+
+  orborus:
+    image: ghcr.io/shuffle/shuffle-orborus:2.3.0
+    environment:
+      - SHUFFLE_WORKER_IMAGE=ghcr.io/shuffle/shuffle-worker:2.3.0
+
+  opensearch:
+    # wazuh-indexer owns host :9200. Backend reaches this one as
+    # https://shuffle-opensearch:9200 over the compose network.
+    ports: !reset []
+    environment:
+      - "OPENSEARCH_JAVA_OPTS=-Xms2g -Xmx2g"
