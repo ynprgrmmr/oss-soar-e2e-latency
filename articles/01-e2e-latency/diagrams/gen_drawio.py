@@ -67,7 +67,7 @@ MGMT = "endArrow=classic;html=1;dashed=1;strokeColor=#757575;fontColor=#757575;"
 def topology() -> Diagram:
     d = Diagram("oci-topology", 1300, 900)
     internet = d.box(560, 20, 180, 50, "Internet", NODE + "fillColor=#F5F5F5;")
-    operator = d.box(860, 20, 260, 50, "Operator (Chromebook)<br>admin_cidr /32 only", NODE + "fillColor=#F5F5F5;")
+    operator = d.box(860, 20, 260, 50, "Operator (Linux / Control Host)<br>admin_cidr /32 only", NODE + "fillColor=#F5F5F5;")
     d.box(40, 100, 1220, 770, "OCI us-phoenix-1 (home region) / AD-3", CONTAINER + "fillColor=#FAFAFA;dashed=1;")
     d.box(70, 140, 1160, 710, "VCN 10.10.0.0/16", CONTAINER + "fillColor=#FFFFFF;")
     igw = d.box(580, 150, 140, 40, "Internet Gateway", NODE + "fillColor=#ECEFF1;")

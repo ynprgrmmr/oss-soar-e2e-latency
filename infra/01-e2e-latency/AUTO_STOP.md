@@ -13,7 +13,7 @@ Shape を誤って変更した場合に課金が発生しうるため、多層�
 | L3 | Compartment **Quota** で A1 4 OCPU / E2.1.Micro 2 台以外を作成不可に | Shape 誤設定による課金の防止 | 後回し（テナンシ管理者権限が必要） |
 | L4 | **Budget** アラート（月 100 等）をメール通知 | 最終検知 | **適用済み**（`infra/guardrails/`、2026-11-24） |
 | L4' | Terraform の `check` ブロックで Always Free 超過（A1 > 4 OCPU / Micro > 2 台）を plan 時に警告 | 設定ミスの早期発見 | **実装済み** |
-| L5 | `expires-at` タグ + 期限切れチェックスクリプト（Chromebook から手動/定期実行） | 期限切れの可視化 | タグのみ実装 |
+| L5 | `expires-at` タグ + 期限切れチェックスクリプト（Linux / Control Host から手動/定期実行） | 期限切れの可視化 | タグのみ実装 |
 
 ### L1: 実験ごとの destroy
 
@@ -60,7 +60,7 @@ set compute-core quota standard-e2-micro-core-count to 2 in compartment soar-net
 将来、`oci search resource structured-search` で期限切れリソースを一覧する
 スクリプトを `infra/` に追加予定。
 
-## Chromebook cron を主手段にしない理由
+## Linux / Control Host の cron を主手段にしない理由
 
-Chromebook Linux VM はスリープ/シャットダウンで停止するため、cron は発火保証がない。
+Linux / Control Host（ノート PC 上の Linux VM など）はスリープやシャットダウンで止まるため、cron が確実に動く保証がない。
 クラウド側（L2/L4）を安全網とし、ローカルは「手動 destroy の手順化」に留める。

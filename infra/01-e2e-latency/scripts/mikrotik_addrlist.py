@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Dynamic Address-List management for MikroTik RouterOS v7 via REST API.
 
-Stdlib only (runs on the Chromebook control plane, the SOAR VM, or inside a
+Stdlib only (runs on the Linux / Control Host, the SOAR VM, or inside a
 Shuffle "execute python" action without extra packages).
 
 Every call prints one JSON line including high-resolution wall-clock

@@ -15,7 +15,7 @@ the rendered JA version. Only private addresses and role names appear — no pub
 
 ```mermaid
 flowchart TB
-  OP["Operator (Chromebook)<br/>admin_cidr /32 only"]
+  OP["Operator (Linux / Control Host)<br/>admin_cidr /32 only"]
   subgraph OCI["OCI us-phoenix-1 (home region) / AD-3"]
     IGW["Internet Gateway"]
     subgraph VCN["VCN 10.10.0.0/16"]

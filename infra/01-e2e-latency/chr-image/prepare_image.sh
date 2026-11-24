@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Download a MikroTik CHR image, verify the vendor SHA-256, convert raw -> QCOW2.
-# Runs on the Chromebook control plane; output stays OUTSIDE the repo.
+# Runs on the Linux / Control Host; output stays OUTSIDE the repo.
 #
 #   ./prepare_image.sh [version] [arm64|x86_64]
 #   -> prints image_path / image_sha256 lines to paste into terraform.tfvars
