@@ -60,6 +60,28 @@ Most design notes are written in Japanese; the article is available in both lang
 - Addresses in the data are private (`10.10.0.0/16`) or documentation ranges (`192.0.2.0/24`, `203.0.113.0/24`).
 - The attack used is a single failed SSH login to a lab VM you own. Do not point the scripts at systems you are not authorized to test.
 
+## Optional: turnkey starter kit
+
+Everything in this repository — infrastructure code, measurement scripts, raw data and the article — stays open and
+free under the licenses below. You can reproduce the whole study from it.
+
+If you would rather not assemble a production-style deployment from scratch, a separate turnkey deployment kit is
+available as an optional paid package:
+
+**[Wazuh × Shuffle × MikroTik CHR SOAR Starter Kit on OCI (v1.0.0)](https://buy.polar.sh/polar_cl_C3ZRDnWa40mKHDSjUpn2WszNtHRLFRabBDee80SzjBO)** — $29, via Polar.sh
+
+59 files, with a commercial license:
+
+- Terraform IaC modules for OCI (VCN, subnets, security lists, compute)
+- A custom MikroTik CHR connector: Python scripts that take blocking requests from the Shuffle SOAR webhook or Wazuh
+  Active Response and add the source IP to a dynamic address list through the RouterOS REST API (with an allowlist)
+- Wazuh and Shuffle configuration: detection rule, Active Response settings, and the blocking workflow with a script
+  that creates it through the Shuffle API
+- Step-by-step guides for deployment, validation and cleanup
+
+The kit contains no third-party binaries; Wazuh, Shuffle, MikroTik CHR and OCI are used under their own terms.
+It is not required to use or reproduce anything in this repository.
+
 ## License
 
 - Code, Terraform and configuration: [MIT](LICENSE)
